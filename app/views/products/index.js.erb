@@ -1,7 +1,6 @@
 $('#products').append('<%= j render(@products) %>');
-<% if @products.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@products) %>');
+<% if @products.total_pages == @products.current_page %>
+  $("#show_more_link.hide();
 <% else %>
-  $('.pagination').remove();
+  $("#show_more_link").attr("href", "<%= products_path(:page =>(@products.current_page+1)) %>");
 <% end %>
-<% sleep 1 %>

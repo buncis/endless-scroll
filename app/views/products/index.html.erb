@@ -6,5 +6,10 @@
       <%= render product %>
     </div>  
   <% end %>
-  <%= will_paginate @products %>
+  <% if false %>
+    <%= will_paginate @products %>
+  <% end %>    
+  <% unless @products.total_pages <2 %>
+    <%= link_to 'show_more', products_path(:page => 2), :remote => true, :id => 'show_more_link' %>
+  <% end %>
 <%= link_to 'New Product', new_product_path %>
